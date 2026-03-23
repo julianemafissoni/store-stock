@@ -6,7 +6,7 @@ def lista_produtos(request):
     produtos = Produto.objects.all()
     return render(request, 'estoque/lista_produtos.html', {'produtos': produtos})
 
-def criar_produtos(request):
+def criar_produto(request):
     if request.method == 'POST':
         form = ProdutoForm(request.POST)
         if form.is_valid():
