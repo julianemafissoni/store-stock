@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <a href="/novo/">Adicionar novo produto</a>
     <title>Produtos</title>
 </head>
 <body>
+
+    <a href="/novo/">Adicionar novo produto</a>
+
     <h1>Lista de Produtos</h1>
+
     {% if messages %}
-    {% for message in messages %}
-        <p>{{ message }}</p>
-    {% endfor %}
-{% endif %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
 
     <table border="1">
         <tr>
@@ -20,6 +23,7 @@
             <th>Código</th>
             <th>Quantidade</th>
             <th>Preço</th>
+            <th>Ações</th> 
         </tr>
 
         {% for produto in produtos %}
@@ -28,9 +32,12 @@
             <td>{{ produto.codigo }}</td>
             <td>{{ produto.quantidade }}</td>
             <td>{{ produto.preco }}</td>
+            <td>
+                <a href="/editar/{{ produto.id }}/">Editar</a>
+            </td>
         </tr>
         {% endfor %}
     </table>
-    
+
 </body>
 </html>
