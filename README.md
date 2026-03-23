@@ -55,6 +55,7 @@ python manage.py runserver
 Open in your browser:
 
 http://127.0.0.1:8000
+
 👩‍💻 Author
 
 Developed by Juliane Mafisoni.
