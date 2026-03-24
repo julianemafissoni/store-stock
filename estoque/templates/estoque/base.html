@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Estoque{% endblock title %}</title>
+</head>
+<body>
+
+    <h1>Sistema de Estoque</h1>
+
+    <a href="/">Início</a>
+    <a href="/novo/">Adicionar Produto</a>
+
+    <hr>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+    
+</body>
+</html>

@@ -1,50 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
-</head>
-<body>
+{% extends 'estoque/base.html' %}
 
-    <a href="/novo/">Adicionar novo produto</a>
+{% block title %}Product List{% endblock %}
 
-    <h1>Lista de Produtos</h1>
+{% block content %}
 
-    {% if messages %}
-        {% for message in messages %}
-            <p>{{ message }}</p>
-        {% endfor %}
-    {% endif %}
+<h2>Lista de Produtos</h2>
 
-    <table border="1">
-        <tr>
-            <th>Nome</th>
-            <th>Código</th>
-            <th>Quantidade</th>
-            <th>Preço</th>
-            <th>Ações</th> 
-        </tr>
+<table border="1">
+    <tr>
+        <th>Nome</th>
+        <th>Código</th>
+        <th>Quantidade</th>
+        <th>Preço</th>
+        <th>Ações</th>
+    </tr>
 
-        {% for produto in produtos %}
-        <tr>
-            <td>{{ produto.nome }}</td>
-            <td>{{ produto.codigo }}</td>
-            <td>{{ produto.quantidade }}</td>
-            <td>{{ produto.preco }}</td>
-            <td>
-                <a href="/editar/{{ produto.id }}/">Editar</a>
+    {% for produto in produtos %}
+    <tr>
+        <td>{{ produto.nome }}</td>
+        <td>{{ produto.codigo }}</td>
+        <td>{{ produto.quantidade }}</td>
+        <td>{{ produto.preco }}</td>
+        <td>
+            <a href="/editar/{{ produto.id }}/">Editar</a>
 
-                <form action="/deletar/{{ produto.id }}/" method="POST" style="display:inline;">
-                    {% csrf_token %}
-                    <button style="color: red" type="submit" onclick="return confirm('Tem certeza que quer excluir esse item?');">
-                        Deletar
-                    </button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+            <form action="/deletar/{{ produto.id }}/" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" onclick="return confirm('Tem certeza?');">
+                    Deletar
+                </button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 
-</body>
-</html>
+{% endblock %}

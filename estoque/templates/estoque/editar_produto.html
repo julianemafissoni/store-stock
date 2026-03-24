@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="PT-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Produto</title>
-</head>
-<body>
+{% extends 'estoque/base.html' %}
 
-    <h1>Edit Product</h1>
+{% block title %}Editar Produto{% endblock %}
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Update</button>
-    </form>
-    
-</body>
-</html>
+{% block content %}
+
+<h2>Editar Produto</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Atualizar</button>
+</form>
+
+{% endblock %}
