@@ -34,6 +34,13 @@
             <td>{{ produto.preco }}</td>
             <td>
                 <a href="/editar/{{ produto.id }}/">Editar</a>
+
+                <form action="/deletar/{{ produto.id }}/" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button style="color: red" type="submit" onclick="return confirm('Tem certeza que quer excluir esse item?');">
+                        Deletar
+                    </button>
+                </form>
             </td>
         </tr>
         {% endfor %}

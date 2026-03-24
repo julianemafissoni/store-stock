@@ -32,3 +32,13 @@ def editar_produto(request, id):
         form = ProdutoForm(instance=produto)
 
     return render(request, 'estoque/criar_produto.html', {'form': form})
+
+def deletar_produto(request, id):
+    produto = get_object_or_404(Produto, id=id)
+
+    if request.method == 'POST':
+        produto.delete()
+        messages.success(request, 'Produto apagado!')
+        return redirect('lista_produtos')
+
+    return redirect('lista_produtos')
