@@ -12,7 +12,7 @@ def criar_produto(request):
         form = ProdutoForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Product criado com sucesso!')
+            messages.success(request, 'Produto criado com sucesso!')
             return redirect('lista_produtos')
     else:
         form = ProdutoForm()
@@ -26,7 +26,7 @@ def editar_produto(request, id):
         form = ProdutoForm(request.POST, instance=produto)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Product atualizado!')
+            messages.success(request, 'Produto atualizado!')
             return redirect('lista_produtos')
     else:
         form = ProdutoForm(instance=produto)
